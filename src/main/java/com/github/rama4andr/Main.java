@@ -1,4 +1,6 @@
-package com.github.rama4andr;public class Main {
+package com.github.rama4andr;
+
+public class Main {
     public static void main(String[] args) {
         System.out.println("Hello world!");
     }
