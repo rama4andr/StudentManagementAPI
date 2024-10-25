@@ -12,7 +12,7 @@ public class StudentDto implements Serializable {
 
     private String group;
 
-    private double averageGrade;
+    private Double averageGrade;
 
     public String getLastName() {
         return lastName;
@@ -46,11 +46,11 @@ public class StudentDto implements Serializable {
         this.group = group;
     }
 
-    public double getAverageGrade() {
+    public Double getAverageGrade() {
         return averageGrade;
     }
 
-    public void setAverageGrade(double averageGrade) {
+    public void setAverageGrade(Double averageGrade) {
         this.averageGrade = averageGrade;
     }
 }

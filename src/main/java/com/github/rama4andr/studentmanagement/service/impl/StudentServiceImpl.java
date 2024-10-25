@@ -34,13 +34,27 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public StudentDto updateStudent(String id, StudentDto student) {
         StudentEntity studentEntity = studentRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Student not found"));
+                .orElseThrow(() -> new RuntimeException("Student not found with id: " + id));
 
-        studentEntity.setFirstName(student.getFirstName());
-        studentEntity.setLastName(student.getLastName());
-        studentEntity.setPatronymic(student.getPatronymic());
-        studentEntity.setGroup(student.getGroup());
-        studentEntity.setAverageGrade(student.getAverageGrade());
+        if (student.getFirstName() != null) {
+            studentEntity.setFirstName(student.getFirstName());
+        }
+
+        if (student.getLastName() != null) {
+            studentEntity.setLastName(student.getLastName());
+        }
+
+        if (student.getPatronymic() != null) {
+            studentEntity.setPatronymic(student.getPatronymic());
+        }
+
+        if (student.getGroup() != null) {
+            studentEntity.setGroup(student.getGroup());
+        }
+
+        if (student.getAverageGrade() != null) {
+            studentEntity.setAverageGrade(student.getAverageGrade());
+        }
 
         StudentEntity savedEntity = studentRepository.save(studentEntity);
         return entityToDto(savedEntity);

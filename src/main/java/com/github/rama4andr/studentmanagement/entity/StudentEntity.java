@@ -23,10 +23,10 @@ public class StudentEntity {
     private String group;
 
     @Field("average_grade")
-    private double averageGrade;
+    private Double averageGrade;
 
-    @Field("is_deleted")
-    private boolean isDeleted = false;
+    @Field("deleted")
+    private boolean deleted = false;
 
     public String getLastName() {
         return lastName;
@@ -60,19 +60,19 @@ public class StudentEntity {
         this.group = group;
     }
 
-    public double getAverageGrade() {
+    public Double getAverageGrade() {
         return averageGrade;
     }
 
-    public void setAverageGrade(double averageGrade) {
+    public void setAverageGrade(Double averageGrade) {
         this.averageGrade = averageGrade;
     }
 
     public boolean isDeleted() {
-        return isDeleted;
+        return deleted;
     }
 
     public void setDeleted(boolean deleted) {
-        isDeleted = deleted;
+        this.deleted = deleted;
     }
 }
