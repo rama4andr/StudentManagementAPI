@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 public class StudentDto implements Serializable {
 
+    private String id;
+
     private String lastName;
 
     private String firstName;
@@ -13,6 +15,24 @@ public class StudentDto implements Serializable {
     private String group;
 
     private Double averageGrade;
+
+    public StudentDto() {}
+
+    public StudentDto(String lastName, String firstName, String patronymic, String group, Double averageGrade) {
+        this.lastName = lastName;
+        this.firstName = firstName;
+        this.patronymic = patronymic;
+        this.group = group;
+        this.averageGrade = averageGrade;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getLastName() {
         return lastName;

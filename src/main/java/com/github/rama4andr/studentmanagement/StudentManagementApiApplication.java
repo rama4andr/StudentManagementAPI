@@ -1,4 +1,4 @@
-package com.github.rama4andr;
+package com.github.rama4andr.studentmanagement;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

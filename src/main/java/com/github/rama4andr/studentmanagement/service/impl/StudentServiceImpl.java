@@ -70,6 +70,7 @@ public class StudentServiceImpl implements StudentService {
 
     private StudentDto entityToDto(StudentEntity studentEntity) {
         StudentDto studentDto = new StudentDto();
+        studentDto.setId(studentEntity.getId());
         studentDto.setLastName(studentEntity.getLastName());
         studentDto.setFirstName(studentEntity.getFirstName());
         studentDto.setPatronymic(studentEntity.getPatronymic());
