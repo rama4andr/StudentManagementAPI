@@ -158,3 +158,6 @@ curl -X DELETE http://localhost:8080/student/delete/{id} \
 ```
 mvn test
 ```
+
+#### Экспорт для тестирования в Postman:
+[StudentManagementApiApplication.postman_collection](./StudentManagementApiApplication.postman_collection.json)

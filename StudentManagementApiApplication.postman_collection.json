@@ -1,0 +1,402 @@
+{
+	"info": {
+		"_postman_id": "148cbc1e-86c9-452f-89a7-28b8f1100536",
+		"name": "StudentManagementApiApplication",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28004131"
+	},
+	"item": [
+		{
+			"name": "StudentAPI",
+			"item": [
+				{
+					"name": "Add student",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "redirect_uri",
+									"value": "http://localhost:8080/login/oauth2/code/github",
+									"type": "string"
+								},
+								{
+									"key": "scope",
+									"value": "read:user",
+									"type": "string"
+								},
+								{
+									"key": "client_authentication",
+									"value": "header",
+									"type": "string"
+								},
+								{
+									"key": "clientSecret",
+									"value": "2d72dd4e0f9b7d5e6b77728c393e2ec735510d7a",
+									"type": "string"
+								},
+								{
+									"key": "clientId",
+									"value": "Ov23liQdKT3NwjTR3YEd",
+									"type": "string"
+								},
+								{
+									"key": "accessTokenUrl",
+									"value": "https://github.com/login/oauth/access_token",
+									"type": "string"
+								},
+								{
+									"key": "authUrl",
+									"value": "https://github.com/login/oauth/authorize",
+									"type": "string"
+								},
+								{
+									"key": "tokenName",
+									"value": "GitHub Access Token",
+									"type": "string"
+								},
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"lastName\": \"Asafiev\",\r\n  \"firstName\": \"Andrey\",\r\n  \"patronymic\": \"Artemovich\",\r\n  \"group\": \"102\",\r\n  \"averageGrade\": 4.1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/student/add",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"student",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update student",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "scope",
+									"value": "user:email",
+									"type": "string"
+								},
+								{
+									"key": "accessTokenUrl",
+									"value": "https://github.com/login/oauth/access_token",
+									"type": "string"
+								},
+								{
+									"key": "authUrl",
+									"value": "https://github.com/login/oauth/authorize",
+									"type": "string"
+								},
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								},
+								{
+									"key": "redirect_uri",
+									"value": "http://localhost:8080/login/oauth2/code/github",
+									"type": "string"
+								},
+								{
+									"key": "client_authentication",
+									"value": "header",
+									"type": "string"
+								},
+								{
+									"key": "clientSecret",
+									"value": "2d72dd4e0f9b7d5e6b77728c393e2ec735510d7a",
+									"type": "string"
+								},
+								{
+									"key": "clientId",
+									"value": "Ov23liQdKT3NwjTR3YEd",
+									"type": "string"
+								},
+								{
+									"key": "tokenName",
+									"value": "GitHub Access Token",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"lastName\": \"Ivanov\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/student/update/{id}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"student",
+								"update",
+								"{id}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete student",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "scope",
+									"value": "user:email",
+									"type": "string"
+								},
+								{
+									"key": "accessTokenUrl",
+									"value": "https://github.com/login/oauth/access_token",
+									"type": "string"
+								},
+								{
+									"key": "authUrl",
+									"value": "https://github.com/login/oauth/authorize",
+									"type": "string"
+								},
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								},
+								{
+									"key": "redirect_uri",
+									"value": "http://localhost:8080/login/oauth2/code/github",
+									"type": "string"
+								},
+								{
+									"key": "client_authentication",
+									"value": "header",
+									"type": "string"
+								},
+								{
+									"key": "clientSecret",
+									"value": "2d72dd4e0f9b7d5e6b77728c393e2ec735510d7a",
+									"type": "string"
+								},
+								{
+									"key": "clientId",
+									"value": "Ov23liQdKT3NwjTR3YEd",
+									"type": "string"
+								},
+								{
+									"key": "tokenName",
+									"value": "GitHub Access Token",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"lastName\": \"Petrov\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/student/delete/{id}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"student",
+								"delete",
+								"{id}"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all students",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "scope",
+									"value": "user:email",
+									"type": "string"
+								},
+								{
+									"key": "accessTokenUrl",
+									"value": "https://github.com/login/oauth/access_token",
+									"type": "string"
+								},
+								{
+									"key": "authUrl",
+									"value": "https://github.com/login/oauth/authorize",
+									"type": "string"
+								},
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								},
+								{
+									"key": "redirect_uri",
+									"value": "http://localhost:8080/login/oauth2/code/github",
+									"type": "string"
+								},
+								{
+									"key": "client_authentication",
+									"value": "header",
+									"type": "string"
+								},
+								{
+									"key": "clientSecret",
+									"value": "2d72dd4e0f9b7d5e6b77728c393e2ec735510d7a",
+									"type": "string"
+								},
+								{
+									"key": "clientId",
+									"value": "Ov23liQdKT3NwjTR3YEd",
+									"type": "string"
+								},
+								{
+									"key": "tokenName",
+									"value": "GitHub Access Token",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/student/get_all",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"student",
+								"get_all"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Create user",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"login\": \"rertert\",\r\n  \"password\": \"555555\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/auth/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"auth",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get token",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"login\": \"rertert\",\r\n  \"password\": \"555555\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/auth/get_token",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"auth",
+						"get_token"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
