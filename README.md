@@ -161,8 +161,7 @@ curl -X DELETE http://localhost:8080/student/delete/{id} \
 
 Описание: Помечает студента с указанным {id} как удаленного.
 
-#### В API присутствуют unit-тесты для проверки контроллеров, запустить можно с помощью команды:
-```mvn test```
+#### В API присутствуют unit-тесты для проверки контроллеров, запустить можно с помощью команды:```mvn test```
 
 #### Экспорт для тестирования в Postman:
 [StudentManagementApiApplication.postman_collection](./StudentManagementApiApplication.postman_collection.json)
