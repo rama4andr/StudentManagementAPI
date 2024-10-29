@@ -58,7 +58,8 @@ curl -X POST http://localhost:8080/auth/create \
   -d '{
         "username": "user1",
         "password": "password123"
-      }' ```
+      }' 
+```
 
 Ответ:
 
@@ -67,7 +68,8 @@ curl -X POST http://localhost:8080/auth/create \
   "data": {
     "username": "user1"
   }
-}```
+}
+```
 
 ### 2. Получение токена доступа
 
@@ -78,14 +80,15 @@ curl -X POST http://localhost:8080/auth/get_token \
   -d '{
         "username": "user1",
         "password": "password123"
-      }' ```
+      }' 
+```
 
 Ответ:
 
 ```{
   "message": "Токен доступа получен успешно.",
   "data": "Bearer your_access_token_here"
-}```
+```
 
 Сохраните токен, он понадобится для аутентификации в следующих запросах.
 
@@ -95,9 +98,12 @@ curl -X POST http://localhost:8080/auth/get_token \
 
 ```bash
 curl -X GET http://localhost:8080/students \
-  -H "Authorization: Bearer your_access_token_here" ```
+  -H "Authorization: Bearer your_access_token_here" 
+```
 
 Примечание: Замените your_access_token_here на токен, полученный на предыдущем шаге.
 
-### В API присутствуют unit-тесты для проверки контроллеров, запустить можно с помощью команды:
-```mvn test```
+#### В API присутствуют unit-тесты для проверки контроллеров, запустить можно с помощью команды:
+```
+mvn test
+```
