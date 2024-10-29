@@ -37,12 +37,12 @@ public class StudentControllerTest {
 
     @BeforeEach
     void setUp() {
-        studentDto = new StudentDto("Ivanov", "John", "Ivanovich", "4", 4.6);
+        studentDto = new StudentDto("qd1qe234crq234r435","Ivanov", "John", "Ivanovich", "4", 4.6);
     }
 
     @Test
-    void testGetAllStudents() throws Exception {
-        when(studentService.getAllStudents()).thenReturn(Collections.singletonList(studentDto));
+    void testGetAll() throws Exception {
+        when(studentService.getAll()).thenReturn(Collections.singletonList(studentDto));
 
         mockMvc.perform(get("/student/get_all"))
                 .andExpect(status().isOk())
@@ -50,8 +50,8 @@ public class StudentControllerTest {
     }
 
     @Test
-    void testAddStudent() throws Exception {
-        when(studentService.addStudent(any(StudentDto.class))).thenReturn(studentDto);
+    void testAdd() throws Exception {
+        when(studentService.add(any(StudentDto.class))).thenReturn(studentDto);
 
         mockMvc.perform(post("/student/add")
                         .contentType(MediaType.APPLICATION_JSON)
@@ -61,8 +61,8 @@ public class StudentControllerTest {
     }
 
     @Test
-    void testUpdateStudent() throws Exception {
-        when(studentService.updateStudent(eq("1"), any(StudentDto.class))).thenReturn(studentDto);
+    void testUpdate() throws Exception {
+        when(studentService.update(eq("1"), any(StudentDto.class))).thenReturn(studentDto);
 
         mockMvc.perform(patch("/student/update/1")
                         .contentType(MediaType.APPLICATION_JSON)
@@ -72,8 +72,8 @@ public class StudentControllerTest {
     }
 
     @Test
-    void testDeleteStudent() throws Exception {
-        doNothing().when(studentService).deleteStudent("1");
+    void testDelete() throws Exception {
+        doNothing().when(studentService).delete("1");
 
         mockMvc.perform(delete("/student/delete/1"))
                 .andExpect(status().isNoContent());

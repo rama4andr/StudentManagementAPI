@@ -21,27 +21,32 @@ import java.time.temporal.ChronoUnit;
 @Service
 public class UserServiceImpl implements UserService {
 
-    @Autowired
-    private AuthenticationManager authenticationManager;
+    private final AuthenticationManager authenticationManager;
 
-    @Autowired
-    private PasswordEncoder passwordEncoder;
+    private final PasswordEncoder passwordEncoder;
 
-    @Autowired
-    private JwtEncoder jwtEncoder;
+    private final JwtEncoder jwtEncoder;
 
-    @Autowired
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
+
+    public UserServiceImpl(AuthenticationManager authenticationManager, JwtEncoder jwtEncoder,
+                           UserRepository userRepository, PasswordEncoder passwordEncoder) {
+        this.authenticationManager = authenticationManager;
+        this.jwtEncoder = jwtEncoder;
+        this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
+    }
 
     @Override
-    public void createUser(UserDto userDto) {
+    public UserDto create(UserDto userDto) {
         UserEntity userEntity = dtoToEntity(userDto);
 
-        if (userRepository.getUserEntityByLogin(userEntity.getLogin()).isEmpty()) {
-            userRepository.save(userEntity);
-        } else {
-            throw new BadCredentialsException("Пользователь с таким логином уже существует: " + userEntity.getLogin());
+        if (userRepository.getUserEntityByLogin(userEntity.getLogin()).isPresent()) {
+            throw new BadCredentialsException("A user with this username already exists: " + userEntity.getLogin());
         }
+        UserEntity savedEntity = userRepository.save(userEntity);
+
+        return entityToDto(savedEntity);
     }
 
     @Override
@@ -71,5 +76,9 @@ public class UserServiceImpl implements UserService {
         userEntity.setLogin(userDto.login());
         userEntity.setPassword(passwordEncoder.encode(userDto.password()));
         return userEntity;
+    }
+
+    private UserDto entityToDto(UserEntity savedEntity) {
+        return new UserDto(savedEntity.getLogin(), savedEntity.getPassword());
     }
 }

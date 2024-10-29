@@ -70,32 +70,17 @@ curl -X POST http://localhost:8080/auth/create \
       }' 
 ```
 
-Ответ:
-
-```
-  "message": "Пользователь успешно создан.",
-  "data": {
-    "username": "user1"
-```
-
 ### 2. Получение токена доступа
 
 Для получения токена отправьте POST-запрос на /auth/get_token, указав логин и пароль:
 
 ```bash
-curl -X POST http://localhost:8080/auth/get_token \
+curl -X POST http://localhost:8080/auth \
   -H "Content-Type: application/json" \
   -d '{
         "username": "user1",
         "password": "password123"
       }' 
-```
-
-Ответ:
-
-```{
-  "message": "Токен доступа получен успешно.",
-  "data": "Bearer your_access_token_here"
 ```
 
 Сохраните токен, он понадобится для аутентификации в следующих запросах.
@@ -106,7 +91,7 @@ curl -X POST http://localhost:8080/auth/get_token \
 /students:
 
 ```bash
-curl -X GET http://localhost:8080/student/get_all \
+curl -X GET http://localhost:8080/students \
   -H "Authorization: Bearer your_access_token_here" 
 ```
 
@@ -117,7 +102,7 @@ curl -X GET http://localhost:8080/student/get_all \
 ### 1. Получение всех студентов
 
 ```bash
-curl -X GET http://localhost:8080/student/get_all \
+curl -X GET http://localhost:8080/students \
   -H "Authorization: Bearer your_access_token_here"
 ```
 
@@ -126,7 +111,7 @@ curl -X GET http://localhost:8080/student/get_all \
 ### 2. Добавление нового студента
 
 ```bash
-curl -X POST http://localhost:8080/student/add \
+curl -X POST http://localhost:8080/students \
   -H "Authorization: Bearer your_access_token_here" \
   -H "Content-Type: application/json" \
   -d '{
@@ -142,7 +127,7 @@ curl -X POST http://localhost:8080/student/add \
 ### 3. Обновление информации о студенте по ID
 
 ```bash
-curl -X PATCH http://localhost:8080/student/update/{id} \
+curl -X PATCH http://localhost:8080/students/{id} \
   -H "Authorization: Bearer your_access_token_here" \
   -H "Content-Type: application/json" \
   -d '{
@@ -155,7 +140,7 @@ curl -X PATCH http://localhost:8080/student/update/{id} \
 ### 4. Пометка студента как удаленного
 
 ```bash
-curl -X DELETE http://localhost:8080/student/delete/{id} \
+curl -X DELETE http://localhost:8080/students/{id} \
   -H "Authorization: Bearer your_access_token_here"
 ```
 

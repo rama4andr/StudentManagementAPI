@@ -32,7 +32,7 @@ public class AuthControllerTest {
     }
 
     @Test
-    void testCreateUser() throws Exception {
+    void testCreate() throws Exception {
         mockMvc.perform(post("/auth/create")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("{\"username\":\"newuser\",\"password\":\"securepassword\"}"))

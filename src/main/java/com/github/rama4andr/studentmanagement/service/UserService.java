@@ -4,7 +4,7 @@ import com.github.rama4andr.studentmanagement.dto.UserDto;
 
 public interface UserService {
 
-    void createUser(UserDto userDto);
+    UserDto create(UserDto userDto);
 
     String getAccessToken(UserDto userDto);
 }

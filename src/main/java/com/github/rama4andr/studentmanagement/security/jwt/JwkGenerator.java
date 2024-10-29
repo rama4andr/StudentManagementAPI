@@ -6,6 +6,8 @@ import com.nimbusds.jose.jwk.gen.RSAKeyGenerator;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
+import java.util.UUID;
+
 @Component
 public class JwkGenerator {
 
@@ -14,7 +16,7 @@ public class JwkGenerator {
     public JwkGenerator() throws JOSEException {
 
         this.rsaJWK = new RSAKeyGenerator(2048)
-                .keyID("123")
+                .keyID(UUID.randomUUID().toString())
                 .generate();
     }
 

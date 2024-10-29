@@ -1,5 +1,9 @@
 package com.github.rama4andr.studentmanagement.entity;
 
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
@@ -10,25 +14,18 @@ public class UserEntity {
     @Id
     private String id;
 
+    @Setter
+    @Getter
+    @NotNull
+    @Size(max = 255)
     @Field("login")
     private String login;
 
+    @Setter
+    @Getter
+    @NotNull
+    @Size(max = 255)
     @Field("password")
     private String password;
 
-    public String getLogin() {
-        return login;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
 }

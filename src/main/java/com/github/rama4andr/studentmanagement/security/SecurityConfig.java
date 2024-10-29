@@ -51,9 +51,7 @@ public class SecurityConfig {
                 .httpBasic(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(configurer ->
                         configurer
-                                .requestMatchers("/auth/create")
-                                .permitAll()
-                                .requestMatchers("/auth/get_token")
+                                .requestMatchers("/auth", "/auth/create")
                                 .permitAll()
                                 .anyRequest()
                                 .authenticated())
@@ -73,7 +71,7 @@ public class SecurityConfig {
             JWKSource<SecurityContext> jwkSource = new ImmutableJWKSet<>(new JWKSet(jwk));
             return new NimbusJwtEncoder(jwkSource);
         } catch (JOSEException e) {
-            throw new IllegalStateException("Не удалось создать JwtEncoder с указанным публичным ключом", e);
+            throw new IllegalStateException("Failed to create JwtEncoder with the specified public key", e);
         }
     }
 
@@ -82,7 +80,7 @@ public class SecurityConfig {
         try {
             return NimbusJwtDecoder.withPublicKey(rsaKey.toRSAPublicKey()).build();
         } catch (JOSEException e) {
-            throw new IllegalStateException("Не удалось создать JwtDecoder с указанным публичным ключом", e);
+            throw new IllegalStateException("Failed to create JwtDecoder with the specified public key", e);
         }
     }
 

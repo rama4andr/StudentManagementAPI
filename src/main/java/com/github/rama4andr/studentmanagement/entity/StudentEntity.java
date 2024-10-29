@@ -1,86 +1,44 @@
 package com.github.rama4andr.studentmanagement.entity;
 
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
+@Setter
+@Getter
 @Document(collection = "student")
 public class StudentEntity {
 
     @Id
     private String id;
 
+    @Size(max = 255)
+    @NotNull
     @Field("last_name")
     private String lastName;
 
+    @Size(max = 255)
+    @NotNull
     @Field("first_name")
     private String firstName;
 
+    @Size(max = 255)
     @Field("patronymic")
     private String patronymic;
 
+    @Size(max = 255)
+    @NotNull
     @Field("group")
     private String group;
 
+    @NotNull
     @Field("average_grade")
     private Double averageGrade;
 
     @Field("deleted")
     private boolean deleted = false;
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getPatronymic() {
-        return patronymic;
-    }
-
-    public void setPatronymic(String patronymic) {
-        this.patronymic = patronymic;
-    }
-
-    public String getGroup() {
-        return group;
-    }
-
-    public void setGroup(String group) {
-        this.group = group;
-    }
-
-    public Double getAverageGrade() {
-        return averageGrade;
-    }
-
-    public void setAverageGrade(Double averageGrade) {
-        this.averageGrade = averageGrade;
-    }
-
-    public boolean isDeleted() {
-        return deleted;
-    }
-
-    public void setDeleted(boolean deleted) {
-        this.deleted = deleted;
-    }
 }
