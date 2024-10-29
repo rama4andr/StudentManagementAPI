@@ -29,15 +29,16 @@ OAuth 2.0. API позволяет создавать пользователей,
 
 2. **Для полного развертывания в Docker**:
     - Файл docker-compose.yml:
-      ```environment:
-      - SPRING_DATA_MONGODB_URI=mongodb://root:rootpass@mongo:27017/studentdb?authSource=admin```
+```
+   environment: - SPRING_DATA_MONGODB_URI=mongodb://${MONGO_USER}:${MONGO_PASS}@mongo:27017/studentdb?authSource=admin
+```
 
 ## Запуск приложения
 
 Необходим файл .env c указанным окружением в корневой папке проекта:
 ```
-    MONGO_USER=root
-    MONGO_PASS=rootpass
+   MONGO_USER=root
+   MONGO_PASS=rootpass
 ```
 
 ### Локальный запуск
