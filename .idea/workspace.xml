@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6f58acb1-0e9a-41ce-b2fb-dbe493f24c01" name="Changes" comment="README.md" />
+    <list default="true" id="6f58acb1-0e9a-41ce-b2fb-dbe493f24c01" name="Changes" comment="Added .env to MongoDB info">
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -142,7 +147,7 @@
       <workItem from="1730156168251" duration="888000" />
       <workItem from="1730157071024" duration="5281000" />
       <workItem from="1730199778196" duration="250000" />
-      <workItem from="1730200046616" duration="11041000" />
+      <workItem from="1730200046616" duration="12738000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <option name="closed" value="true" />
@@ -216,7 +221,15 @@
       <option name="project" value="LOCAL" />
       <updated>1730219532313</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Added .env to MongoDB info">
+      <option name="closed" value="true" />
+      <created>1730219866215</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1730219866215</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -241,7 +254,8 @@
     <MESSAGE value="feat: enable deployment of application and MongoDB in Docker&#10;&#10;- Added Dockerfile for building the application image&#10;- Configured docker-compose.yml to set up MongoDB with initialization parameters&#10;- Ensured the application connects to MongoDB using environment variables&#10;- Volume setup for persistent MongoDB data storage" />
     <MESSAGE value="debug: &#10;- record classes&#10;- small features" />
     <MESSAGE value="README.md" />
-    <option name="LAST_COMMIT_MESSAGE" value="README.md" />
+    <MESSAGE value="Added .env to MongoDB info" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added .env to MongoDB info" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

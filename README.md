@@ -34,11 +34,18 @@ OAuth 2.0. API позволяет создавать пользователей,
 
 ## Запуск приложения
 
+Необходим файл .env c указанным окружением в корневой папке проекта:
+```
+    MONGO_USER=root
+    MONGO_PASS=rootpass
+```
+
 ### Локальный запуск
 
 1. Запустите MongoDB в Docker:
    ```bash
-   docker run --name studentdb -d -p 27017:27017 -e MONGO_INITDB_ROOT_USERNAME=root -e MONGO_INITDB_ROOT_PASSWORD=rootpass mongo```
+   docker run --name studentdb -d -p 27017:27017 -e MONGO_INITDB_ROOT_USERNAME=root -e MONGO_INITDB_ROOT_PASSWORD=rootpass mongo
+   ```
 2. Запустите приложение:
    ```mvn spring-boot:run```
 
@@ -154,10 +161,7 @@ curl -X DELETE http://localhost:8080/student/delete/{id} \
 Описание: Помечает студента с указанным {id} как удаленного.
 
 #### В API присутствуют unit-тесты для проверки контроллеров, запустить можно с помощью команды:
-
-```
-mvn test
-```
+```mvn test```
 
 #### Экспорт для тестирования в Postman:
 [StudentManagementApiApplication.postman_collection](./StudentManagementApiApplication.postman_collection.json)
