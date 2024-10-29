@@ -2,7 +2,8 @@
 
 ## Описание
 
-**Student Management API** — это REST-сервис для получения информации о студентах, с поддержкой аутентификации через OAuth 2.0. API позволяет создавать пользователей, получать токен доступа и использовать его для дальнейших запросов.
+**Student Management API** — это REST-сервис для получения информации о студентах, с поддержкой аутентификации через
+OAuth 2.0. API позволяет создавать пользователей, получать токен доступа и использовать его для дальнейших запросов.
 
 ## Минимальные требования
 
@@ -23,13 +24,13 @@
 Проект использует два профиля:
 
 1. **Для локального запуска**:
-   - MongoDB разворачивается в Docker.
-   - Файл конфигурации `src/main/resources/application.properties`
+    - MongoDB разворачивается в Docker.
+    - Файл конфигурации `src/main/resources/application.properties`
 
 2. **Для полного развертывания в Docker**:
-   - Файл docker-compose.yml:
-     ```environment:
-     - SPRING_DATA_MONGODB_URI=mongodb://root:rootpass@mongo:27017/studentdb?authSource=admin```
+    - Файл docker-compose.yml:
+      ```environment:
+      - SPRING_DATA_MONGODB_URI=mongodb://root:rootpass@mongo:27017/studentdb?authSource=admin```
 
 ## Запуск приложения
 
@@ -63,17 +64,16 @@ curl -X POST http://localhost:8080/auth/create \
 
 Ответ:
 
-```{
+```
   "message": "Пользователь успешно создан.",
   "data": {
     "username": "user1"
-  }
-}
 ```
 
 ### 2. Получение токена доступа
 
 Для получения токена отправьте POST-запрос на /auth/get_token, указав логин и пароль:
+
 ```bash
 curl -X POST http://localhost:8080/auth/get_token \
   -H "Content-Type: application/json" \
@@ -94,16 +94,67 @@ curl -X POST http://localhost:8080/auth/get_token \
 
 ### 3. Запросы к защищенным ресурсам
 
-Для выполнения запросов к защищенным ресурсам передавайте токен в заголовке Authorization. Пример GET-запроса к /students:
+Для выполнения запросов к защищенным ресурсам передавайте токен в заголовке Authorization. Пример GET-запроса к
+/students:
 
 ```bash
-curl -X GET http://localhost:8080/students \
+curl -X GET http://localhost:8080/student/get_all \
   -H "Authorization: Bearer your_access_token_here" 
 ```
 
 Примечание: Замените your_access_token_here на токен, полученный на предыдущем шаге.
 
+## Запросы для работы со студентами
+
+### 1. Получение всех студентов
+
+```bash
+curl -X GET http://localhost:8080/student/get_all \
+  -H "Authorization: Bearer your_access_token_here"
+```
+
+Описание: Возвращает список всех студентов, которые не помечены как удаленные.
+
+### 2. Добавление нового студента
+
+```bash
+curl -X POST http://localhost:8080/student/add \
+  -H "Authorization: Bearer your_access_token_here" \
+  -H "Content-Type: application/json" \
+  -d '{
+        "firstName": "Ivan",
+        "lastName": "Ivanov",
+        "age": 20,
+        "course": "Mathematics"
+      }'
+```
+
+Описание: Добавляет нового студента с указанными данными.
+
+### 3. Обновление информации о студенте по ID
+
+```bash
+curl -X PATCH http://localhost:8080/student/update/{id} \
+  -H "Authorization: Bearer your_access_token_here" \
+  -H "Content-Type: application/json" \
+  -d '{
+        "lastName": "Petrov"
+      }'
+```
+
+Описание: Обновляет информацию о студенте с указанным {id}.
+
+### 4. Пометка студента как удаленного
+
+```bash
+curl -X DELETE http://localhost:8080/student/delete/{id} \
+  -H "Authorization: Bearer your_access_token_here"
+```
+
+Описание: Помечает студента с указанным {id} как удаленного.
+
 #### В API присутствуют unit-тесты для проверки контроллеров, запустить можно с помощью команды:
+
 ```
 mvn test
 ```
