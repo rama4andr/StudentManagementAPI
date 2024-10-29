@@ -34,7 +34,7 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public StudentDto updateStudent(String id, StudentDto student) {
         StudentEntity studentEntity = studentRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Student not found with id: " + id));
+                .orElseThrow(() -> new RuntimeException("Студент с таким ID отсутствует: " + id));
 
         if (student.getFirstName() != null) {
             studentEntity.setFirstName(student.getFirstName());
@@ -63,7 +63,7 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public void deleteStudent(String id) {
         StudentEntity studentEntity = studentRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Student not found"));
+                .orElseThrow(() -> new RuntimeException("Студент с таким ID отсутствует: " + id));
         studentEntity.setDeleted(true);
         studentRepository.save(studentEntity);
     }

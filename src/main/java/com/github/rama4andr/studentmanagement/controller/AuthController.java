@@ -5,7 +5,7 @@ import com.github.rama4andr.studentmanagement.service.UserService;
 import com.github.rama4andr.studentmanagement.util.ResponseMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,10 +22,15 @@ public class AuthController {
 
     // POST: Создание нового пользователя
     @PostMapping("/create")
-    public ResponseEntity<ResponseMessage<UserDto>> createUser(@RequestBody UserDto userDto) {
-        userService.createUser(userDto);
-        return ResponseEntity.status(HttpStatus.CREATED)
-                .body(new ResponseMessage<>("Пользователь успешно создан.", userDto));
+    public ResponseEntity<ResponseMessage<String>> createUser(@RequestBody UserDto userDto) {
+        try {
+            userService.createUser(userDto);
+            return ResponseEntity.status(HttpStatus.CREATED)
+                    .body(new ResponseMessage<>("Пользователь успешно создан.", userDto.login()));
+        } catch (BadCredentialsException e) {
+            return ResponseEntity.status(HttpStatus.CONFLICT)
+                    .body(new ResponseMessage<>("Пользователь с таким логином уже существует: ", userDto.login()));
+        }
     }
 
     // POST: Получение access_token

@@ -4,14 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6f58acb1-0e9a-41ce-b2fb-dbe493f24c01" name="Changes" comment="Added OAuth 2.0 authorization with endpoints auth/create and auth/get_token">
-      <change afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/github/rama4andr/controller/AuthControllerTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/github/rama4andr/controller/StudentControllerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="6f58acb1-0e9a-41ce-b2fb-dbe493f24c01" name="Changes" comment="feat: enable deployment of application and MongoDB in Docker&#10;&#10;- Added Dockerfile for building the application image&#10;- Configured docker-compose.yml to set up MongoDB with initialization parameters&#10;- Ensured the application connects to MongoDB using environment variables&#10;- Volume setup for persistent MongoDB data storage">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/rama4andr/studentmanagement/controller/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/rama4andr/studentmanagement/controller/AuthController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/rama4andr/studentmanagement/dto/UserDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/rama4andr/studentmanagement/dto/UserDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/rama4andr/studentmanagement/service/impl/StudentServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/rama4andr/studentmanagement/service/impl/StudentServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/rama4andr/studentmanagement/util/ResponseMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/rama4andr/studentmanagement/util/ResponseMessage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -51,38 +49,47 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;Spring Boot.StudentManagementApiApplication.executor&quot;: &quot;Run&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;advanced.settings&quot;,
-    &quot;spring.configuration.checksum&quot;: &quot;22095a03a9d2d60dbfbd4a92bf718e92&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Main.executor": "Run",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Spring Boot.StudentManagementApiApplication.executor": "Run",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "master",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/ramil/IdeaProjects/StudentManagementAPI/src/main/resources",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "advanced.settings",
+    "spring.configuration.checksum": "22095a03a9d2d60dbfbd4a92bf718e92",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;mongo&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mongo"
     ]
   }
-}</component>
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\ramil\IdeaProjects\StudentManagementAPI\src\main\resources" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\ramil\IdeaProjects\StudentManagementAPI" />
+    </key>
+  </component>
   <component name="RunManager" selected="Spring Boot.StudentManagementApiApplication">
     <configuration name="StudentManagementApiApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.github.rama4andr.studentmanagement.StudentManagementApiApplication" />
@@ -140,7 +147,9 @@
       <workItem from="1730132424544" duration="7305000" />
       <workItem from="1730152290495" duration="3744000" />
       <workItem from="1730156168251" duration="888000" />
-      <workItem from="1730157071024" duration="2253000" />
+      <workItem from="1730157071024" duration="5281000" />
+      <workItem from="1730199778196" duration="250000" />
+      <workItem from="1730200046616" duration="7847000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <option name="closed" value="true" />
@@ -166,7 +175,23 @@
       <option name="project" value="LOCAL" />
       <updated>1730159311218</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="test: added unit tests for AuthController and StudentController">
+      <option name="closed" value="true" />
+      <created>1730159427264</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1730159427264</updated>
+    </task>
+    <task id="LOCAL-00005" summary="feat: enable deployment of application and MongoDB in Docker&#10;&#10;- Added Dockerfile for building the application image&#10;- Configured docker-compose.yml to set up MongoDB with initialization parameters&#10;- Ensured the application connects to MongoDB using environment variables&#10;- Volume setup for persistent MongoDB data storage">
+      <option name="closed" value="true" />
+      <created>1730159516228</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1730159516228</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -187,7 +212,9 @@
     <MESSAGE value="Initial commit" />
     <MESSAGE value="Implemented basic functionality of the student service&#10;&#10;- Added entities (StudentEntity) and DTO (StudentDto).&#10;- Implemented services for managing students (add, retrieve, update, delete).&#10;- Created controllers for handling HTTP requests.&#10;- Added a layer for mapping between entities and DTOs.&#10;- Implemented logic for soft deletion of students using the is_deleted field." />
     <MESSAGE value="Added OAuth 2.0 authorization with endpoints auth/create and auth/get_token" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added OAuth 2.0 authorization with endpoints auth/create and auth/get_token" />
+    <MESSAGE value="test: added unit tests for AuthController and StudentController" />
+    <MESSAGE value="feat: enable deployment of application and MongoDB in Docker&#10;&#10;- Added Dockerfile for building the application image&#10;- Configured docker-compose.yml to set up MongoDB with initialization parameters&#10;- Ensured the application connects to MongoDB using environment variables&#10;- Volume setup for persistent MongoDB data storage" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: enable deployment of application and MongoDB in Docker&#10;&#10;- Added Dockerfile for building the application image&#10;- Configured docker-compose.yml to set up MongoDB with initialization parameters&#10;- Ensured the application connects to MongoDB using environment variables&#10;- Volume setup for persistent MongoDB data storage" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
